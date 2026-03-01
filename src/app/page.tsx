@@ -87,16 +87,23 @@ const faqs = [
   },
 ];
 
+const getPreferredTheme = (): "light" | "dark" => {
+  if (typeof window === "undefined") return "light";
+
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
 export default function Home() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
 
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    if (document.documentElement.classList.contains("dark")) return "dark";
+    return getPreferredTheme();
   });
 
   useEffect(() => {
