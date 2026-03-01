@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -87,33 +86,12 @@ const faqs = [
   },
 ];
 
-const getPreferredTheme = (): "light" | "dark" => {
-  if (typeof window === "undefined") return "light";
-
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-
 export default function Home() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light";
-
-    if (document.documentElement.classList.contains("dark")) return "dark";
-    return getPreferredTheme();
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
+    const root = document.documentElement;
+    const nextIsDark = !root.classList.contains("dark");
+    root.classList.toggle("dark", nextIsDark);
+    localStorage.setItem("theme", nextIsDark ? "dark" : "light");
   };
 
   return (
@@ -122,15 +100,19 @@ export default function Home() {
         <nav className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4">
           <a href="#product" className="inline-flex items-center">
             <Image
-              src={
-                theme === "dark"
-                  ? "/Dark%20mode%20logo.png"
-                  : "/Light%20mode%20Logo.png"
-              }
+              src="/Light%20mode%20Logo.png"
               alt="Remnis"
               width={160}
               height={32}
-              className="h-8 w-auto"
+              className="h-8 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/Dark%20mode%20logo.png"
+              alt="Remnis"
+              width={160}
+              height={32}
+              className="hidden h-8 w-auto dark:block"
               priority
             />
           </a>
@@ -150,17 +132,12 @@ export default function Home() {
               <Sun className="h-4 w-4 text-muted-foreground" />
               <button
                 type="button"
-                role="switch"
-                aria-checked={theme === "dark"}
                 aria-label="Toggle day and night mode"
                 onClick={toggleTheme}
-                className="relative h-6 w-11 rounded-full border border-border bg-muted transition-colors data-[state=dark]:bg-primary"
-                data-state={theme}
+                className="relative h-6 w-11 rounded-full border border-border bg-muted transition-colors dark:bg-primary"
               >
                 <span
-                  className={`absolute left-0.5 top-0.5 h-[18px] w-[18px] rounded-full bg-background shadow transition-transform ${
-                    theme === "dark" ? "translate-x-5" : "translate-x-0"
-                  }`}
+                  className="absolute left-0.5 top-0.5 h-[18px] w-[18px] translate-x-0 rounded-full bg-background shadow transition-transform dark:translate-x-5"
                 />
               </button>
               <Moon className="h-4 w-4 text-muted-foreground" />
