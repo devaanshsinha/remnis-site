@@ -17,6 +17,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Remnis",
   description: "Context engine for macOS",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/dark-favicon.ico",
+        media: "(prefers-color-scheme: light)", // colors are inverted
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
