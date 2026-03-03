@@ -27,6 +27,23 @@ const navItems = [
   { label: "FAQ", href: "#faq" },
   { label: "Get Started", href: "#get-started" },
 ];
+const githubUrl = "https://github.com/devaanshsinha/remnis-app";
+
+function GithubButton({
+  size,
+  variant,
+}: {
+  size?: "sm" | "default" | "lg" | "icon";
+  variant?: "default" | "outline" | "secondary" | "ghost" | "link";
+}) {
+  return (
+    <a href={githubUrl} target="_blank" rel="noreferrer">
+      <Button size={size} variant={variant}>
+        View on GitHub
+      </Button>
+    </a>
+  );
+}
 
 const featureCards = [
   {
@@ -142,7 +159,7 @@ export default function Home() {
               </button>
               <Moon className="h-4 w-4 text-muted-foreground" />
             </div>
-            <Button size="sm">Get Early Access</Button>
+            <GithubButton size="sm" />
           </div>
         </nav>
       </header>
@@ -165,7 +182,7 @@ export default function Home() {
               without slowing down.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button>Get Early Access</Button>
+              <GithubButton />
               <Button variant="outline">See How It Works</Button>
             </div>
           </div>
@@ -561,12 +578,11 @@ export default function Home() {
         <section id="get-started" className="scroll-mt-20 border-t py-20">
           <h2 className="text-3xl font-semibold tracking-tight">Get Started</h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            Join early access and start building with local memory for your dev
-            workflow.
+            Explore the repository and start building with local memory for your
+            dev workflow.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Button>Join Waitlist</Button>
-            <Button variant="outline">View on GitHub</Button>
+            <GithubButton />
           </div>
         </section>
 
