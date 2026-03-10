@@ -302,23 +302,23 @@ export default function Home() {
           </p>
 
           <div className="relative mt-10 grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-950 text-zinc-100 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.7)]">
-              <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-900 px-4 py-3">
+            <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-50 text-zinc-900 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.25)] dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:shadow-[0_20px_60px_-25px_rgba(0,0,0,0.7)]">
+              <div className="flex items-center gap-2 border-b border-zinc-200 bg-zinc-100 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                <p className="ml-3 text-xs text-zinc-400">
+                <p className="ml-3 text-xs text-zinc-500 dark:text-zinc-400">
                   Terminal - npm run build
                 </p>
               </div>
               <div className="space-y-1 px-4 py-4 font-mono text-xs sm:text-sm">
-                <p className="text-zinc-400">$ npm run build</p>
-                <p className="text-zinc-400">Compiling project...</p>
+                <p className="text-zinc-500 dark:text-zinc-400">$ npm run build</p>
+                <p className="text-zinc-500 dark:text-zinc-400">Compiling project...</p>
                 <p className="text-rose-400">
                   error TS2307: Cannot find module &quot;@/lib/search&quot;
                 </p>
-                <p className="text-zinc-500">at src/observer/index.ts:14:19</p>
-                <p className="pt-2 text-zinc-300">
+                <p className="text-zinc-600 dark:text-zinc-500">at src/observer/index.ts:14:19</p>
+                <p className="pt-2 text-zinc-700 dark:text-zinc-300">
                   Build failed with 1 error.
                 </p>
               </div>

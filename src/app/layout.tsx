@@ -8,8 +8,7 @@ const themeInitScript = `
 (() => {
   try {
     const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = saved === "dark" || (saved !== "light" && prefersDark);
+    const isDark = saved ? saved === "dark" : true;
     document.documentElement.classList.toggle("dark", isDark);
   } catch {}
 })();
