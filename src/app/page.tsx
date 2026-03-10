@@ -181,9 +181,11 @@ export default function Home() {
               so you can recover past decisions, errors, and task context
               without slowing down.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
               <GithubButton />
-              <Button variant="outline">See How It Works</Button>
+              <a href="#how-it-works">
+                <Button variant="outline">See How It Works</Button>
+              </a>
             </div>
           </div>
 
