@@ -25,8 +25,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  ),
   title: "Remnis",
   description: "Context engine for macOS",
+  openGraph: {
+    title: "Remnis",
+    description: "Local work memory for macOS developers.",
+    images: [
+      {
+        url: "/Light%20mode%20Logo.png",
+        alt: "Remnis",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Remnis",
+    description: "Local work memory for macOS developers.",
+    images: ["/Light%20mode%20Logo.png"],
+  },
   icons: {
     icon: [
       {
@@ -38,6 +57,7 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: light)", // colors are inverted
       },
     ],
+    apple: [{ url: "/icon.png" }],
   },
 };
 
